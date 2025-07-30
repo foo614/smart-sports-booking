@@ -112,7 +112,13 @@ const PWAInstallPrompt: React.FC = () => {
           color="primary"
           startIcon={<GetAppIcon />}
           onClick={handleInstall}
-          size="small"
+          sx={{
+            minWidth: 120,
+            px: 3,
+            py: 1,
+            fontSize: '0.875rem',
+            fontWeight: 600
+          }}
         >
           Install
         </Button>
