@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
-  <rect width="800" height="600" fill="#e6f7ff" />
-  <rect x="50" y="50" width="700" height="500" fill="#4caf50" stroke="#ffffff" stroke-width="5" />
-  <line x1="400" y1="50" x2="400" y2="550" stroke="#ffffff" stroke-width="5" />
-  <rect x="150" y="200" width="500" height="200" fill="none" stroke="#ffffff" stroke-width="5" />
-  <line x1="400" y1="200" x2="400" y2="400" stroke="#ffffff" stroke-width="5" />
-  <circle cx="400" cy="300" r="50" fill="none" stroke="#ffffff" stroke-width="5" />
-  <text x="400" y="580" font-family="Arial" font-size="24" text-anchor="middle" fill="#333333">Tennis Court</text>
-</svg>
