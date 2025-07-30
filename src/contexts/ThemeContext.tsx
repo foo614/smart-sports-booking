@@ -7,7 +7,7 @@ type ThemeContextType = {
 };
 
 const ThemeContext = createContext<ThemeContextType>({
-  mode: 'light',
+  mode: 'dark',
   toggleColorMode: () => {},
 });
 
@@ -20,7 +20,7 @@ interface ThemeProviderProps {
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   // Check if user has a preference stored in localStorage
   const storedMode = localStorage.getItem('themeMode') as PaletteMode | null;
-  const [mode, setMode] = useState<PaletteMode>(storedMode || 'light');
+  const [mode, setMode] = useState<PaletteMode>(storedMode || 'dark');
 
   // Update localStorage when mode changes
   useEffect(() => {
