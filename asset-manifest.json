@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/smart-sports-booking/static/css/main.9a71fbc5.css",
+    "main.js": "/smart-sports-booking/static/js/main.cc2c704f.js",
+    "static/js/206.91c555fd.chunk.js": "/smart-sports-booking/static/js/206.91c555fd.chunk.js",
+    "static/media/volleyball-court.svg": "/smart-sports-booking/static/media/volleyball-court.ee2836aa9562deee6f8acd9fdc95c61b.svg",
+    "static/media/sports-facilities.svg": "/smart-sports-booking/static/media/sports-facilities.5d0d7fe38ed630683268efe4f0c2028e.svg",
+    "static/media/badminton-court.svg": "/smart-sports-booking/static/media/badminton-court.2788128d8b596804231445c8ab9ccaa6.svg",
+    "static/media/swimming-pool.svg": "/smart-sports-booking/static/media/swimming-pool.f8f68c8f2503e333c2bbdbcd08d89a39.svg",
+    "index.html": "/smart-sports-booking/index.html",
+    "static/media/football-field.svg": "/smart-sports-booking/static/media/football-field.2e9876050f44170918a16b53fc742950.svg",
+    "static/media/basketball-court.svg": "/smart-sports-booking/static/media/basketball-court.7fe003c584cb5a359913d7edf5e9f0c8.svg",
+    "static/media/tennis-court.svg": "/smart-sports-booking/static/media/tennis-court.30018c0ae14e6081a3ae9253fa08cda4.svg",
+    "static/media/avatar-female-1.svg": "/smart-sports-booking/static/media/avatar-female-1.0d639b7756e6ab9a59c2d46cf6dd679c.svg",
+    "static/media/avatar-male-1.svg": "/smart-sports-booking/static/media/avatar-male-1.b98570ae80f0af0073216f7a09b94f66.svg",
+    "static/media/avatar-male-2.svg": "/smart-sports-booking/static/media/avatar-male-2.8862f7d93b92de9ccf28dda0eff12f67.svg"
+  },
+  "entrypoints": [
+    "static/css/main.9a71fbc5.css",
+    "static/js/main.cc2c704f.js"
+  ]
+}
