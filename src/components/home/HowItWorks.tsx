@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Container, Typography, GridLegacy as Grid, Paper, Avatar } from '@mui/material';
 import { Search, EventAvailable, Payment, CheckCircle } from '@mui/icons-material';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const steps = [
   {
@@ -30,15 +31,33 @@ const steps = [
 ];
 
 const HowItWorks: React.FC = () => {
+  const { mode } = useTheme();
+  
   return (
-    <Box sx={{ py: 8, bgcolor: '#f5f5f5' }}>
+    <Box 
+      sx={{ 
+        py: 8, 
+        background: mode === 'dark'
+          ? 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)'
+          : 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)'
+      }}
+    >
       <Container maxWidth="lg">
         <Typography
           component="h2"
           variant="h3"
           align="center"
-          color="text.primary"
           gutterBottom
+          sx={{
+            fontWeight: 'bold',
+            background: mode === 'dark'
+              ? 'linear-gradient(45deg, #64b5f6 30%, #42a5f5 90%)'
+              : 'linear-gradient(45deg, #1976d2 30%, #1565c0 90%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            mb: 2
+          }}
         >
           How It Works
         </Typography>
@@ -50,7 +69,6 @@ const HowItWorks: React.FC = () => {
           {steps.map((step, index) => (
             <Grid item key={index} xs={12} sm={6} md={3}>
               <Paper
-                elevation={3}
                 sx={{
                   p: 3,
                   height: '100%',
@@ -58,10 +76,21 @@ const HowItWorks: React.FC = () => {
                   flexDirection: 'column',
                   alignItems: 'center',
                   textAlign: 'center',
-                  transition: '0.3s',
+                  borderRadius: 3,
+                  background: mode === 'dark'
+                    ? 'linear-gradient(145deg, rgba(30, 30, 30, 0.9) 0%, rgba(50, 50, 50, 0.9) 100%)'
+                    : 'linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%)',
+                  backdropFilter: 'blur(10px)',
+                  border: mode === 'dark' ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(255, 255, 255, 0.2)',
+                  boxShadow: mode === 'dark'
+                    ? '0 8px 32px rgba(0, 0, 0, 0.3)'
+                    : '0 8px 32px rgba(0, 0, 0, 0.1)',
+                  transition: 'all 0.3s ease',
                   '&:hover': {
-                    transform: 'translateY(-5px)',
-                    boxShadow: 6,
+                    transform: 'translateY(-8px)',
+                    boxShadow: mode === 'dark'
+                      ? '0 12px 40px rgba(0, 0, 0, 0.4)'
+                      : '0 12px 40px rgba(0, 0, 0, 0.15)',
                   },
                 }}
               >
@@ -70,13 +99,24 @@ const HowItWorks: React.FC = () => {
                     width: 80,
                     height: 80,
                     mb: 2,
-                    bgcolor: step.color,
+                    background: `linear-gradient(45deg, ${step.color} 30%, #42a5f5 90%)`,
                     color: 'white',
+                    boxShadow: mode === 'dark'
+                      ? '0 4px 20px rgba(0, 0, 0, 0.3)'
+                      : '0 4px 20px rgba(0, 0, 0, 0.1)',
                   }}
                 >
                   {step.icon}
                 </Avatar>
-                <Typography gutterBottom variant="h5" component="h3">
+                <Typography 
+                  gutterBottom 
+                  variant="h5" 
+                  component="h3"
+                  sx={{
+                    fontWeight: 600,
+                    color: mode === 'dark' ? '#e3f2fd' : '#1565c0'
+                  }}
+                >
                   {index + 1}. {step.title}
                 </Typography>
                 <Typography variant="body1" color="text.secondary">
