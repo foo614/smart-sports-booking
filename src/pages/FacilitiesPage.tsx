@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Typography, GridLegacy as Grid, Card, CardMedia, CardContent, CardActions, Button, Box, Chip, Rating, Divider, Paper } from '@mui/material';
 import { AccessTime, LocationOn, Info, MonetizationOn } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
+import { useTheme } from '../contexts/ThemeContext';
 
 // Import local images
 import tennisCourt from '../assets/images/tennis-court.svg';
@@ -94,14 +95,41 @@ const facilities = [
 ];
 
 const FacilitiesPage: React.FC = () => {
+  const { mode } = useTheme();
+  
   return (
-    <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Typography variant="h3" component="h1" gutterBottom>
-        Our Sports Facilities
-      </Typography>
-      <Typography variant="h6" color="text.secondary" paragraph>
-        Browse and book from our wide range of sports facilities
-      </Typography>
+    <Box
+      sx={{
+        minHeight: '100vh',
+        background: mode === 'dark'
+          ? 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)'
+          : 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+        py: 4
+      }}
+    >
+      <Container maxWidth="lg">
+        <Box sx={{ textAlign: 'center', mb: 4 }}>
+          <Typography 
+            variant="h3" 
+            component="h1" 
+            gutterBottom
+            sx={{
+              fontWeight: 'bold',
+              background: mode === 'dark'
+                ? 'linear-gradient(45deg, #64b5f6 30%, #42a5f5 90%)'
+                : 'linear-gradient(45deg, #1976d2 30%, #1565c0 90%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              mb: 2
+            }}
+          >
+            Our Sports Facilities
+          </Typography>
+          <Typography variant="h6" color="text.secondary" paragraph>
+            Browse and book from our wide range of sports facilities
+          </Typography>
+        </Box>
       
       <Grid container spacing={4} sx={{ mt: 2 }}>
         {facilities.map((facility) => (
@@ -111,19 +139,54 @@ const FacilitiesPage: React.FC = () => {
                 height: '100%',
                 display: 'flex',
                 flexDirection: 'column',
-                transition: '0.3s',
+                borderRadius: 3,
+                background: mode === 'dark'
+                  ? 'linear-gradient(145deg, rgba(30, 30, 30, 0.9) 0%, rgba(50, 50, 50, 0.9) 100%)'
+                  : 'linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%)',
+                backdropFilter: 'blur(10px)',
+                border: mode === 'dark' ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(255, 255, 255, 0.2)',
+                boxShadow: mode === 'dark'
+                  ? '0 8px 32px rgba(0, 0, 0, 0.3)'
+                  : '0 8px 32px rgba(0, 0, 0, 0.1)',
+                transition: 'all 0.3s ease',
                 '&:hover': {
-                  transform: 'translateY(-5px)',
-                  boxShadow: 6,
+                  transform: 'translateY(-8px)',
+                  boxShadow: mode === 'dark'
+                    ? '0 12px 40px rgba(0, 0, 0, 0.4)'
+                    : '0 12px 40px rgba(0, 0, 0, 0.15)',
                 },
               }}
             >
-              <CardMedia
-                component="img"
-                height="240"
-                image={facility.image}
-                alt={facility.name}
-              />
+              <Box sx={{ position: 'relative', overflow: 'hidden', borderRadius: '12px 12px 0 0' }}>
+                <CardMedia
+                  component="img"
+                  height="240"
+                  image={facility.image}
+                  alt={facility.name}
+                  sx={{
+                    transition: 'transform 0.3s ease',
+                    '&:hover': {
+                      transform: 'scale(1.05)'
+                    }
+                  }}
+                />
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    top: 16,
+                    right: 16,
+                    background: mode === 'dark' ? 'rgba(0, 0, 0, 0.7)' : 'rgba(255, 255, 255, 0.9)',
+                    borderRadius: 2,
+                    px: 1.5,
+                    py: 0.5,
+                    backdropFilter: 'blur(10px)'
+                  }}
+                >
+                  <Typography variant="h6" color="primary" sx={{ fontWeight: 'bold' }}>
+                    {facility.price}
+                  </Typography>
+                </Box>
+              </Box>
               <CardContent sx={{ flexGrow: 1 }}>
                 <Typography gutterBottom variant="h5" component="h2">
                   {facility.name}
@@ -139,25 +202,20 @@ const FacilitiesPage: React.FC = () => {
                 </Typography>
                 
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-                  <LocationOn fontSize="small" color="action" sx={{ mr: 1 }} />
+                  <LocationOn fontSize="small" sx={{ color: 'primary.main', mr: 1 }} />
                   <Typography variant="body2" color="text.secondary">
                     {facility.location}
                   </Typography>
                 </Box>
                 
-                <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-                  <AccessTime fontSize="small" color="action" sx={{ mr: 1 }} />
+                <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                  <AccessTime fontSize="small" sx={{ color: 'primary.main', mr: 1 }} />
                   <Typography variant="body2" color="text.secondary">
                     {facility.openingHours}
                   </Typography>
                 </Box>
                 
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                  <MonetizationOn fontSize="small" color="action" sx={{ mr: 1 }} />
-                  <Typography variant="h6" color="primary">
-                    {facility.price}
-                  </Typography>
-                </Box>
+
                 
                 <Box sx={{ mt: 2 }}>
                   {facility.amenities.slice(0, 3).map((amenity, index) => (
@@ -165,7 +223,17 @@ const FacilitiesPage: React.FC = () => {
                       key={index}
                       label={amenity}
                       size="small"
-                      sx={{ mr: 0.5, mb: 0.5 }}
+                      sx={{ 
+                        mr: 0.5, 
+                        mb: 0.5,
+                        backgroundColor: mode === 'dark' ? 'rgba(100, 181, 246, 0.2)' : 'rgba(25, 118, 210, 0.1)',
+                        color: 'primary.main',
+                        border: '1px solid',
+                        borderColor: 'primary.main',
+                        '&:hover': {
+                          backgroundColor: mode === 'dark' ? 'rgba(100, 181, 246, 0.3)' : 'rgba(25, 118, 210, 0.2)'
+                        }
+                      }}
                     />
                   ))}
                   {facility.amenities.length > 3 && (
@@ -173,24 +241,57 @@ const FacilitiesPage: React.FC = () => {
                       label={`+${facility.amenities.length - 3} more`}
                       size="small"
                       variant="outlined"
-                      sx={{ mb: 0.5 }}
+                      sx={{ 
+                        mb: 0.5,
+                        borderColor: 'primary.main',
+                        color: 'primary.main'
+                      }}
                     />
                   )}
                 </Box>
               </CardContent>
-              <CardActions>
-                <Button size="small" component={Link} to={`/facilities/${facility.id}`}>
+              <CardActions sx={{ p: 2, pt: 0 }}>
+                <Button 
+                  size="small" 
+                  component={Link} 
+                  to={`/facilities/${facility.id}`}
+                  sx={{
+                    borderRadius: 2,
+                    textTransform: 'none',
+                    fontWeight: 600,
+                    '&:hover': {
+                      backgroundColor: mode === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.04)'
+                    }
+                  }}
+                >
                   View Details
                 </Button>
-                <Button size="small" color="primary" component={Link} to={`/booking/${facility.id}`}>
+                <Button 
+                  size="small" 
+                  variant="contained"
+                  component={Link} 
+                  to={`/booking/${facility.id}`}
+                  sx={{
+                    borderRadius: 2,
+                    textTransform: 'none',
+                    fontWeight: 600,
+                    background: 'linear-gradient(45deg, #1976d2 30%, #42a5f5 90%)',
+                    '&:hover': {
+                      background: 'linear-gradient(45deg, #1565c0 30%, #1976d2 90%)',
+                      transform: 'translateY(-1px)'
+                    },
+                    transition: 'all 0.2s ease'
+                  }}
+                >
                   Book Now
                 </Button>
               </CardActions>
             </Card>
           </Grid>
         ))}
-      </Grid>
-    </Container>
+        </Grid>
+      </Container>
+    </Box>
   );
 };
 
