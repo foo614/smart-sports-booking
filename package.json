@@ -2,7 +2,7 @@
   "name": "smart-sports-booking",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://yourusername.github.io/smart-sports-booking",
+  "homepage": "https://foo614.github.io/smart-sports-booking",
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
