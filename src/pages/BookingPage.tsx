@@ -24,6 +24,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { useTheme } from '../contexts/ThemeContext';
 
 // Mock data for facilities (same as in FacilitiesPage)
 const facilities = [
@@ -60,6 +61,7 @@ const steps = ['Select Date & Time', 'Your Information', 'Payment', 'Confirmatio
 
 const BookingPage: React.FC = () => {
   const { facilityId } = useParams<{ facilityId: string }>();
+  const { mode } = useTheme();
   const [activeStep, setActiveStep] = useState(0);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [startTime, setStartTime] = useState<Date | null>(null);
@@ -327,11 +329,47 @@ const BookingPage: React.FC = () => {
   };
 
   return (
-    <Container maxWidth="lg" sx={{ py: 4 }}>
+    <Box
+      sx={{
+        minHeight: '100vh',
+        background: mode === 'dark'
+          ? 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)'
+          : 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+        py: 4
+      }}
+    >
+      <Container maxWidth="lg">
       <Grid container spacing={4}>
         <Grid item xs={12} md={8}>
-          <Paper sx={{ p: 3, mb: 4 }}>
-            <Typography variant="h4" gutterBottom>
+          <Paper 
+            sx={{ 
+              p: 3, 
+              mb: 4,
+              borderRadius: 3,
+              background: mode === 'dark'
+                ? 'linear-gradient(145deg, rgba(30, 30, 30, 0.9) 0%, rgba(50, 50, 50, 0.9) 100%)'
+                : 'linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%)',
+              backdropFilter: 'blur(10px)',
+              border: mode === 'dark' ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(255, 255, 255, 0.2)',
+              boxShadow: mode === 'dark'
+                ? '0 8px 32px rgba(0, 0, 0, 0.3)'
+                : '0 8px 32px rgba(0, 0, 0, 0.1)'
+            }}
+          >
+            <Typography 
+              variant="h4" 
+              gutterBottom
+              sx={{
+                fontWeight: 'bold',
+                background: mode === 'dark'
+                  ? 'linear-gradient(45deg, #64b5f6 30%, #42a5f5 90%)'
+                  : 'linear-gradient(45deg, #1976d2 30%, #1565c0 90%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                mb: 2
+              }}
+            >
               Book {facility.name}
             </Typography>
             <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
@@ -344,25 +382,60 @@ const BookingPage: React.FC = () => {
             {renderStepContent(activeStep)}
             <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 3 }}>
               {activeStep !== 0 && activeStep !== steps.length - 1 && (
-                <Button onClick={handleBack} sx={{ mr: 1 }}>
+                <Button 
+                  onClick={handleBack} 
+                  sx={{ 
+                    mr: 1,
+                    borderRadius: 2,
+                    textTransform: 'none',
+                    fontWeight: 600,
+                    '&:hover': {
+                      backgroundColor: mode === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.04)'
+                    }
+                  }}
+                >
                   Back
                 </Button>
               )}
               {activeStep === steps.length - 1 ? (
                 <Button
                   variant="contained"
-                  color="primary"
                   component="a"
                   href="/"
+                  sx={{
+                    borderRadius: 2,
+                    textTransform: 'none',
+                    fontWeight: 600,
+                    background: 'linear-gradient(45deg, #1976d2 30%, #42a5f5 90%)',
+                    '&:hover': {
+                      background: 'linear-gradient(45deg, #1565c0 30%, #1976d2 90%)',
+                      transform: 'translateY(-1px)'
+                    },
+                    transition: 'all 0.2s ease'
+                  }}
                 >
                   Return to Home
                 </Button>
               ) : (
                 <Button
                   variant="contained"
-                  color="primary"
                   onClick={handleNext}
                   disabled={!selectedDate && activeStep === 0}
+                  sx={{
+                    borderRadius: 2,
+                    textTransform: 'none',
+                    fontWeight: 600,
+                    background: 'linear-gradient(45deg, #1976d2 30%, #42a5f5 90%)',
+                    '&:hover': {
+                      background: 'linear-gradient(45deg, #1565c0 30%, #1976d2 90%)',
+                      transform: 'translateY(-1px)'
+                    },
+                    '&:disabled': {
+                      background: 'linear-gradient(45deg, #9e9e9e 30%, #bdbdbd 90%)',
+                      color: 'white'
+                    },
+                    transition: 'all 0.2s ease'
+                  }}
                 >
                   {activeStep === steps.length - 2 ? 'Place Booking' : 'Next'}
                 </Button>
@@ -371,13 +444,34 @@ const BookingPage: React.FC = () => {
           </Paper>
         </Grid>
         <Grid item xs={12} md={4}>
-          <Card sx={{ mb: 3 }}>
-            <CardMedia
-              component="img"
-              height="200"
-              image={facility.image}
-              alt={facility.name}
-            />
+          <Card 
+            sx={{ 
+              mb: 3,
+              borderRadius: 3,
+              background: mode === 'dark'
+                ? 'linear-gradient(145deg, rgba(30, 30, 30, 0.9) 0%, rgba(50, 50, 50, 0.9) 100%)'
+                : 'linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%)',
+              backdropFilter: 'blur(10px)',
+              border: mode === 'dark' ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(255, 255, 255, 0.2)',
+              boxShadow: mode === 'dark'
+                ? '0 8px 32px rgba(0, 0, 0, 0.3)'
+                : '0 8px 32px rgba(0, 0, 0, 0.1)'
+            }}
+          >
+            <Box sx={{ position: 'relative', overflow: 'hidden', borderRadius: '12px 12px 0 0' }}>
+              <CardMedia
+                component="img"
+                height="200"
+                image={facility.image}
+                alt={facility.name}
+                sx={{
+                  transition: 'transform 0.3s ease',
+                  '&:hover': {
+                    transform: 'scale(1.05)'
+                  }
+                }}
+              />
+            </Box>
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
                 {facility.name}
@@ -432,8 +526,9 @@ const BookingPage: React.FC = () => {
             </CardContent>
           </Card>
         </Grid>
-      </Grid>
-    </Container>
+        </Grid>
+      </Container>
+    </Box>
   );
 };
 

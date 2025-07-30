@@ -20,6 +20,7 @@ import {
   Tab,
   Tabs,
 } from '@mui/material';
+import { useTheme } from '../contexts/ThemeContext';
 import {
   AccessTime,
   LocationOn,
@@ -281,6 +282,7 @@ function TabPanel(props: TabPanelProps) {
 
 const FacilityDetailPage: React.FC = () => {
   const { facilityId } = useParams<{ facilityId: string }>();
+  const { mode } = useTheme();
   const [tabValue, setTabValue] = React.useState(0);
   
   // Find the selected facility
@@ -291,17 +293,46 @@ const FacilityDetailPage: React.FC = () => {
   };
 
   return (
-    <Container maxWidth="lg" sx={{ py: 4 }}>
+    <Box
+      sx={{
+        minHeight: '100vh',
+        background: mode === 'dark'
+          ? 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)'
+          : 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+        py: 4
+      }}
+    >
+      <Container maxWidth="lg">
       <Grid container spacing={4}>
         <Grid item xs={12} md={8}>
-          <Paper sx={{ p: 0, overflow: 'hidden' }}>
-            <Box sx={{ position: 'relative', height: 400 }}>
+          <Paper 
+            sx={{ 
+              p: 0, 
+              overflow: 'hidden',
+              borderRadius: 3,
+              background: mode === 'dark'
+                ? 'linear-gradient(145deg, rgba(30, 30, 30, 0.9) 0%, rgba(50, 50, 50, 0.9) 100%)'
+                : 'linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%)',
+              backdropFilter: 'blur(10px)',
+              border: mode === 'dark' ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(255, 255, 255, 0.2)',
+              boxShadow: mode === 'dark'
+                ? '0 8px 32px rgba(0, 0, 0, 0.3)'
+                : '0 8px 32px rgba(0, 0, 0, 0.1)'
+            }}
+          >
+            <Box sx={{ position: 'relative', height: 400, overflow: 'hidden' }}>
               <CardMedia
                 component="img"
                 height="400"
                 image={facility.image}
                 alt={facility.name}
-                sx={{ objectFit: 'cover' }}
+                sx={{ 
+                  objectFit: 'cover',
+                  transition: 'transform 0.3s ease',
+                  '&:hover': {
+                    transform: 'scale(1.05)'
+                  }
+                }}
               />
               <Box
                 sx={{
@@ -314,7 +345,14 @@ const FacilityDetailPage: React.FC = () => {
                   p: 2,
                 }}
               >
-                <Typography variant="h4" component="h1">
+                <Typography 
+                  variant="h4" 
+                  component="h1"
+                  sx={{
+                    fontWeight: 'bold',
+                    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)'
+                  }}
+                >
                   {facility.name}
                 </Typography>
                 <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
@@ -378,7 +416,16 @@ const FacilityDetailPage: React.FC = () => {
               <Grid container spacing={2}>
                 {facility.images.map((image, index) => (
                   <Grid item xs={6} sm={3} key={index}>
-                    <Card>
+                    <Card
+                      sx={{
+                        borderRadius: 2,
+                        overflow: 'hidden',
+                        transition: 'transform 0.2s ease',
+                        '&:hover': {
+                          transform: 'scale(1.02)'
+                        }
+                      }}
+                    >
                       <CardMedia
                         component="img"
                         height="120"
@@ -464,8 +511,34 @@ const FacilityDetailPage: React.FC = () => {
         </Grid>
         
         <Grid item xs={12} md={4}>
-          <Paper sx={{ p: 3, mb: 3 }}>
-            <Typography variant="h5" gutterBottom>
+          <Paper 
+            sx={{ 
+              p: 3, 
+              mb: 3,
+              borderRadius: 3,
+              background: mode === 'dark'
+                ? 'linear-gradient(145deg, rgba(30, 30, 30, 0.9) 0%, rgba(50, 50, 50, 0.9) 100%)'
+                : 'linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%)',
+              backdropFilter: 'blur(10px)',
+              border: mode === 'dark' ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(255, 255, 255, 0.2)',
+              boxShadow: mode === 'dark'
+                ? '0 8px 32px rgba(0, 0, 0, 0.3)'
+                : '0 8px 32px rgba(0, 0, 0, 0.1)'
+            }}
+          >
+            <Typography 
+              variant="h5" 
+              gutterBottom
+              sx={{
+                fontWeight: 'bold',
+                background: mode === 'dark'
+                  ? 'linear-gradient(45deg, #64b5f6 30%, #42a5f5 90%)'
+                  : 'linear-gradient(45deg, #1976d2 30%, #1565c0 90%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              }}
+            >
               Booking Information
             </Typography>
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
@@ -479,12 +552,22 @@ const FacilityDetailPage: React.FC = () => {
             </Typography>
             <Button
               variant="contained"
-              color="primary"
               fullWidth
               size="large"
               component={Link}
               to={`/booking/${facility.id}`}
-              sx={{ mb: 2 }}
+              sx={{ 
+                mb: 2,
+                borderRadius: 2,
+                textTransform: 'none',
+                fontWeight: 600,
+                background: 'linear-gradient(45deg, #1976d2 30%, #42a5f5 90%)',
+                '&:hover': {
+                  background: 'linear-gradient(45deg, #1565c0 30%, #1976d2 90%)',
+                  transform: 'translateY(-1px)'
+                },
+                transition: 'all 0.2s ease'
+              }}
             >
               Book Now
             </Button>
@@ -494,12 +577,36 @@ const FacilityDetailPage: React.FC = () => {
               size="large"
               component="a"
               href={`tel:+1234567890`}
+              sx={{
+                borderRadius: 2,
+                textTransform: 'none',
+                fontWeight: 600,
+                borderColor: mode === 'dark' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.3)',
+                '&:hover': {
+                  backgroundColor: mode === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.04)',
+                  transform: 'translateY(-1px)'
+                },
+                transition: 'all 0.2s ease'
+              }}
             >
               Call for Inquiry
             </Button>
           </Paper>
           
-          <Paper sx={{ p: 3 }}>
+          <Paper 
+            sx={{ 
+              p: 3,
+              borderRadius: 3,
+              background: mode === 'dark'
+                ? 'linear-gradient(145deg, rgba(30, 30, 30, 0.9) 0%, rgba(50, 50, 50, 0.9) 100%)'
+                : 'linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%)',
+              backdropFilter: 'blur(10px)',
+              border: mode === 'dark' ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(255, 255, 255, 0.2)',
+              boxShadow: mode === 'dark'
+                ? '0 8px 32px rgba(0, 0, 0, 0.3)'
+                : '0 8px 32px rgba(0, 0, 0, 0.1)'
+            }}
+          >
             <Typography variant="h6" gutterBottom>
               Need Help?
             </Typography>
@@ -511,7 +618,18 @@ const FacilityDetailPage: React.FC = () => {
               fullWidth
               component={Link}
               to="/contact"
-              sx={{ mb: 1 }}
+              sx={{ 
+                mb: 1,
+                borderRadius: 2,
+                textTransform: 'none',
+                fontWeight: 600,
+                borderColor: mode === 'dark' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.3)',
+                '&:hover': {
+                  backgroundColor: mode === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.04)',
+                  transform: 'translateY(-1px)'
+                },
+                transition: 'all 0.2s ease'
+              }}
             >
               Contact Us
             </Button>
@@ -520,8 +638,9 @@ const FacilityDetailPage: React.FC = () => {
             </Typography>
           </Paper>
         </Grid>
-      </Grid>
-    </Container>
+        </Grid>
+      </Container>
+    </Box>
   );
 };
 
