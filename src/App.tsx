@@ -27,7 +27,7 @@ function App() {
     <ThemeProvider>
       <AuthProvider>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <Router>
+          <Router basename="/smart-sports-booking">
             <Layout>
               <Routes>
                 <Route path="/" element={<HomePage />} />
