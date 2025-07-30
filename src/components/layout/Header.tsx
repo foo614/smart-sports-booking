@@ -1,11 +1,13 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, Button, IconButton, Box, Menu, MenuItem } from '@mui/material';
-import { Menu as MenuIcon, SportsTennis, AccountCircle } from '@mui/icons-material';
+import { Menu as MenuIcon, SportsTennis, AccountCircle, Brightness4, Brightness7 } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const Header: React.FC = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const { mode, toggleColorMode } = useTheme();
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -50,7 +52,15 @@ const Header: React.FC = () => {
           </Button>
         </Box>
 
-        <Box sx={{ ml: 2 }}>
+        <Box sx={{ ml: 2, display: 'flex', alignItems: 'center' }}>
+          <IconButton
+            onClick={toggleColorMode}
+            color="inherit"
+            aria-label="toggle theme"
+            sx={{ mr: 1 }}
+          >
+            {mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
+          </IconButton>
           <IconButton
             size="large"
             aria-label="account of current user"
