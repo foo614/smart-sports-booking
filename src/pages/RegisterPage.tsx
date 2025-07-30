@@ -103,13 +103,35 @@ const RegisterPage: React.FC = () => {
   };
 
   return (
-    <Container maxWidth="sm" sx={{ py: 8 }}>
-      <Paper elevation={3} sx={{ p: 4, borderRadius: 2 }}>
-        <Box sx={{ mb: 3, textAlign: 'center' }}>
-          <Typography variant="h4" component="h1" gutterBottom>
+    <Container maxWidth="md" sx={{ py: 6, minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
+      <Paper 
+        elevation={8} 
+        sx={{ 
+          p: { xs: 3, sm: 5 }, 
+          borderRadius: 4, 
+          width: '100%',
+          background: 'linear-gradient(135deg, rgba(25, 118, 210, 0.05) 0%, rgba(245, 0, 87, 0.05) 100%)',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(255, 255, 255, 0.1)'
+        }}
+      >
+        <Box sx={{ mb: 4, textAlign: 'center' }}>
+          <Typography 
+            variant="h3" 
+            component="h1" 
+            gutterBottom
+            sx={{ 
+              fontWeight: 700,
+              background: 'linear-gradient(45deg, #1976d2, #f50057)',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              mb: 2
+            }}
+          >
             Create an Account
           </Typography>
-          <Typography variant="body1" color="text.secondary">
+          <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
             Join Smart Sports Booking to start booking facilities
           </Typography>
         </Box>
@@ -121,8 +143,8 @@ const RegisterPage: React.FC = () => {
         )}
 
         <Box component="form" onSubmit={handleSubmit} noValidate>
-          <Grid container spacing={2}>
-            <Grid xs={12} md={6}>
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={6}>
               <TextField
                 required
                 fullWidth
@@ -132,10 +154,23 @@ const RegisterPage: React.FC = () => {
                 autoComplete="given-name"
                 value={formData.firstName}
                 onChange={handleChange}
+                variant="outlined"
+                sx={{
+                  '& .MuiOutlinedInput-root': {
+                    borderRadius: 2,
+                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                    '&:hover': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                    },
+                    '&.Mui-focused': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    }
+                  }
+                }}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <Person color="action" />
+                      <Person color="primary" />
                     </InputAdornment>
                   ),
                 }}
@@ -151,10 +186,23 @@ const RegisterPage: React.FC = () => {
                 autoComplete="family-name"
                 value={formData.lastName}
                 onChange={handleChange}
+                variant="outlined"
+                sx={{
+                  '& .MuiOutlinedInput-root': {
+                    borderRadius: 2,
+                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                    '&:hover': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                    },
+                    '&.Mui-focused': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    }
+                  }
+                }}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <Person color="action" />
+                      <Person color="primary" />
                     </InputAdornment>
                   ),
                 }}
@@ -170,10 +218,23 @@ const RegisterPage: React.FC = () => {
                 autoComplete="email"
                 value={formData.email}
                 onChange={handleChange}
+                variant="outlined"
+                sx={{
+                  '& .MuiOutlinedInput-root': {
+                    borderRadius: 2,
+                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                    '&:hover': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                    },
+                    '&.Mui-focused': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    }
+                  }
+                }}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <Email color="action" />
+                      <Email color="primary" />
                     </InputAdornment>
                   ),
                 }}
@@ -190,10 +251,23 @@ const RegisterPage: React.FC = () => {
                 autoComplete="new-password"
                 value={formData.password}
                 onChange={handleChange}
+                variant="outlined"
+                sx={{
+                  '& .MuiOutlinedInput-root': {
+                    borderRadius: 2,
+                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                    '&:hover': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                    },
+                    '&.Mui-focused': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    }
+                  }
+                }}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <Lock color="action" />
+                      <Lock color="primary" />
                     </InputAdornment>
                   ),
                   endAdornment: (
@@ -202,6 +276,7 @@ const RegisterPage: React.FC = () => {
                         aria-label="toggle password visibility"
                         onClick={() => togglePasswordVisibility('password')}
                         edge="end"
+                        sx={{ color: 'primary.main' }}
                       >
                         {showPassword ? <VisibilityOff /> : <Visibility />}
                       </IconButton>
@@ -221,10 +296,23 @@ const RegisterPage: React.FC = () => {
                 autoComplete="new-password"
                 value={formData.confirmPassword}
                 onChange={handleChange}
+                variant="outlined"
+                sx={{
+                  '& .MuiOutlinedInput-root': {
+                    borderRadius: 2,
+                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                    '&:hover': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                    },
+                    '&.Mui-focused': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    }
+                  }
+                }}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <Lock color="action" />
+                      <Lock color="primary" />
                     </InputAdornment>
                   ),
                   endAdornment: (
@@ -233,6 +321,7 @@ const RegisterPage: React.FC = () => {
                         aria-label="toggle password visibility"
                         onClick={() => togglePasswordVisibility('confirmPassword')}
                         edge="end"
+                        sx={{ color: 'primary.main' }}
                       >
                         {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
                       </IconButton>
@@ -271,7 +360,26 @@ const RegisterPage: React.FC = () => {
             fullWidth
             variant="contained"
             size="large"
-            sx={{ mt: 3, mb: 2 }}
+            sx={{ 
+              mt: 4, 
+              mb: 3, 
+              py: 1.5,
+              borderRadius: 3,
+              fontSize: '1.1rem',
+              fontWeight: 600,
+              background: 'linear-gradient(45deg, #1976d2, #42a5f5)',
+              boxShadow: '0 4px 20px rgba(25, 118, 210, 0.3)',
+              '&:hover': {
+                background: 'linear-gradient(45deg, #1565c0, #1976d2)',
+                boxShadow: '0 6px 25px rgba(25, 118, 210, 0.4)',
+                transform: 'translateY(-2px)'
+              },
+              '&:disabled': {
+                background: 'rgba(0, 0, 0, 0.12)',
+                boxShadow: 'none'
+              },
+              transition: 'all 0.3s ease'
+            }}
             disabled={isSubmitting}
           >
             {isSubmitting ? 'Creating Account...' : 'Sign Up'}
@@ -294,12 +402,25 @@ const RegisterPage: React.FC = () => {
         </Divider>
 
         <Grid container spacing={2}>
-          <Grid xs={12} md={6}>
+          <Grid item xs={12} md={6}>
             <Button
               fullWidth
               variant="outlined"
               startIcon={<Google />}
-              sx={{ justifyContent: 'flex-start', py: 1 }}
+              sx={{ 
+                justifyContent: 'flex-start', 
+                py: 1.5,
+                borderRadius: 2,
+                borderColor: 'rgba(255, 255, 255, 0.2)',
+                color: 'text.primary',
+                backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                '&:hover': {
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  borderColor: 'rgba(255, 255, 255, 0.3)',
+                  transform: 'translateY(-1px)'
+                },
+                transition: 'all 0.2s ease'
+              }}
             >
               Sign up with Google
             </Button>
@@ -309,7 +430,20 @@ const RegisterPage: React.FC = () => {
               fullWidth
               variant="outlined"
               startIcon={<Facebook />}
-              sx={{ justifyContent: 'flex-start', py: 1 }}
+              sx={{ 
+                justifyContent: 'flex-start', 
+                py: 1.5,
+                borderRadius: 2,
+                borderColor: 'rgba(255, 255, 255, 0.2)',
+                color: 'text.primary',
+                backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                '&:hover': {
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  borderColor: 'rgba(255, 255, 255, 0.3)',
+                  transform: 'translateY(-1px)'
+                },
+                transition: 'all 0.2s ease'
+              }}
             >
               Sign up with Facebook
             </Button>
