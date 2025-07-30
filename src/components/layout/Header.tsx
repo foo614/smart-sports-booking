@@ -18,7 +18,11 @@ const Header: React.FC = () => {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: '#1e88e5' }}>
+    <AppBar position="static" sx={{ 
+      backgroundColor: mode === 'dark' ? '#1a1a1a' : '#1e88e5',
+      boxShadow: mode === 'dark' ? '0 2px 8px rgba(0,0,0,0.3)' : '0 2px 8px rgba(0,0,0,0.1)',
+      transition: 'all 0.3s ease'
+    }}>
       <Toolbar>
         <IconButton
           size="large"
@@ -57,9 +61,18 @@ const Header: React.FC = () => {
             onClick={toggleColorMode}
             color="inherit"
             aria-label="toggle theme"
-            sx={{ mr: 1 }}
+            sx={{ 
+              mr: 1,
+              backgroundColor: mode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.2)',
+              '&:hover': {
+                backgroundColor: mode === 'dark' ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.3)',
+                transform: 'scale(1.05)'
+              },
+              transition: 'all 0.2s ease',
+              borderRadius: '50%'
+            }}
           >
-            {mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
+            {mode === 'dark' ? <Brightness7 sx={{ color: '#ffd700' }} /> : <Brightness4 sx={{ color: '#fff' }} />}
           </IconButton>
           <IconButton
             size="large"
