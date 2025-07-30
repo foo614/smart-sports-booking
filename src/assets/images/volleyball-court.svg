@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <rect width="800" height="600" fill="#ffd54f" />
+  
+  <!-- Volleyball Court -->
+  <rect x="100" y="100" width="600" height="400" fill="#ffe082" stroke="#ff8f00" stroke-width="4" />
+  
+  <!-- Center Line -->
+  <line x1="400" y1="100" x2="400" y2="500" stroke="#ff8f00" stroke-width="4" />
+  
+  <!-- Attack Lines -->
+  <line x1="100" y1="200" x2="400" y2="200" stroke="#ff8f00" stroke-width="2" />
+  <line x1="400" y1="200" x2="700" y2="200" stroke="#ff8f00" stroke-width="2" />
+  <line x1="100" y1="400" x2="400" y2="400" stroke="#ff8f00" stroke-width="2" />
+  <line x1="400" y1="400" x2="700" y2="400" stroke="#ff8f00" stroke-width="2" />
+  
+  <!-- Net -->
+  <rect x="390" y="90" width="20" height="420" fill="#ffffff" stroke="#212121" stroke-width="2" />
+  <line x1="390" y1="100" x2="410" y2="100" stroke="#212121" stroke-width="1" stroke-dasharray="5,5" />
+  <line x1="390" y1="120" x2="410" y2="120" stroke="#212121" stroke-width="1" stroke-dasharray="5,5" />
+  <line x1="390" y1="140" x2="410" y2="140" stroke="#212121" stroke-width="1" stroke-dasharray="5,5" />
+  <line x1="390" y1="160" x2="410" y2="160" stroke="#212121" stroke-width="1" stroke-dasharray="5,5" />
+  <line x1="390" y1="180" x2="410" y2="180" stroke="#212121" stroke-width="1" stroke-dasharray="5,5" />
+  <line x1="390" y1="200" x2="410" y2="200" stroke="#212121" stroke-width="1" stroke-dasharray="5,5" />
+  <line x1="390" y1="220" x2="410" y2="220" stroke="#212121" stroke-width="1" stroke-dasharray="5,5" />
+  <line x1="390" y1="240" x2="410" y2="240" stroke="#212121" stroke-width="1" stroke-dasharray="5,5" />
+  <line x1="390" y1="260" x2="410" y2="260" stroke="#212121" stroke-width="1" stroke-dasharray="5,5" />
+  <line x1="390" y1="280" x2="410" y2="280" stroke="#212121" stroke-width="1" stroke-dasharray="5,5" />
+  <line x1="390" y1="300" x2="410" y2="300" stroke="#212121" stroke-width="1" stroke-dasharray="5,5" />
+  <line x1="390" y1="320" x2="410" y2="320" stroke="#212121" stroke-width="1" stroke-dasharray="5,5" />
+  <line x1="390" y1="340" x2="410" y2="340" stroke="#212121" stroke-width="1" stroke-dasharray="5,5" />
+  <line x1="390" y1="360" x2="410" y2="360" stroke="#212121" stroke-width="1" stroke-dasharray="5,5" />
+  <line x1="390" y1="380" x2="410" y2="380" stroke="#212121" stroke-width="1" stroke-dasharray="5,5" />
+  <line x1="390" y1="400" x2="410" y2="400" stroke="#212121" stroke-width="1" stroke-dasharray="5,5" />
+  <line x1="390" y1="420" x2="410" y2="420" stroke="#212121" stroke-width="1" stroke-dasharray="5,5" />
+  <line x1="390" y1="440" x2="410" y2="440" stroke="#212121" stroke-width="1" stroke-dasharray="5,5" />
+  <line x1="390" y1="460" x2="410" y2="460" stroke="#212121" stroke-width="1" stroke-dasharray="5,5" />
+  <line x1="390" y1="480" x2="410" y2="480" stroke="#212121" stroke-width="1" stroke-dasharray="5,5" />
+  <line x1="390" y1="500" x2="410" y2="500" stroke="#212121" stroke-width="1" stroke-dasharray="5,5" />
+  
+  <!-- Volleyball -->
+  <circle cx="300" cy="250" r="20" fill="#ffffff" stroke="#212121" stroke-width="2" />
+  <path d="M290 240 L310 260 M290 260 L310 240" stroke="#212121" stroke-width="1" />
+  
+  <text x="400" y="550" font-family="Arial" font-size="24" text-anchor="middle" fill="#333333">Volleyball Court</text>
+</svg>
