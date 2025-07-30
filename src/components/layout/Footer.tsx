@@ -1,22 +1,51 @@
 import React from 'react';
 import { Box, Container, GridLegacy as Grid, Typography, Link, IconButton } from '@mui/material';
 import { Facebook, Twitter, Instagram, YouTube } from '@mui/icons-material';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const Footer: React.FC = () => {
+  const { mode } = useTheme();
+  
   return (
     <Box
       sx={{
-        bgcolor: '#1e88e5',
+        background: mode === 'dark'
+          ? 'linear-gradient(135deg, #0d1421 0%, #1a2332 100%)'
+          : 'linear-gradient(135deg, #1565c0 0%, #1976d2 100%)',
         color: 'white',
         py: 6,
         mt: 'auto',
+        position: 'relative',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: mode === 'dark'
+            ? 'rgba(0, 0, 0, 0.2)'
+            : 'rgba(255, 255, 255, 0.1)',
+          backdropFilter: 'blur(10px)',
+          pointerEvents: 'none'
+        }
       }}
       component="footer"
     >
       <Container maxWidth="lg">
         <Grid container spacing={4} justifyContent="space-between">
           <Grid item xs={12} sm={4}>
-            <Typography variant="h6" gutterBottom>
+            <Typography 
+              variant="h6" 
+              gutterBottom
+              sx={{
+                fontWeight: 'bold',
+                background: 'linear-gradient(45deg, #ffffff 30%, #e3f2fd 90%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              }}
+            >
               Smart Sports Booking
             </Typography>
             <Typography variant="body2">
@@ -24,23 +53,66 @@ const Footer: React.FC = () => {
               Find the perfect venue for your next game or practice session.
             </Typography>
             <Box sx={{ mt: 2 }}>
-              <IconButton color="inherit">
+              <IconButton 
+                color="inherit"
+                sx={{
+                  '&:hover': {
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    transform: 'translateY(-2px)'
+                  },
+                  transition: 'all 0.3s ease'
+                }}
+              >
                 <Facebook />
               </IconButton>
-              <IconButton color="inherit">
+              <IconButton 
+                color="inherit"
+                sx={{
+                  '&:hover': {
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    transform: 'translateY(-2px)'
+                  },
+                  transition: 'all 0.3s ease'
+                }}
+              >
                 <Twitter />
               </IconButton>
-              <IconButton color="inherit">
+              <IconButton 
+                color="inherit"
+                sx={{
+                  '&:hover': {
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    transform: 'translateY(-2px)'
+                  },
+                  transition: 'all 0.3s ease'
+                }}
+              >
                 <Instagram />
               </IconButton>
-              <IconButton color="inherit">
+              <IconButton 
+                color="inherit"
+                sx={{
+                  '&:hover': {
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    transform: 'translateY(-2px)'
+                  },
+                  transition: 'all 0.3s ease'
+                }}
+              >
                 <YouTube />
               </IconButton>
             </Box>
           </Grid>
           
           <Grid item xs={12} sm={4}>
-            <Typography variant="h6" gutterBottom>
+            <Typography 
+              variant="h6" 
+              gutterBottom
+              sx={{
+                fontWeight: 'bold',
+                color: '#e3f2fd'
+              }}
+            >
               Quick Links
             </Typography>
             <Typography variant="body2" display="block" gutterBottom>
@@ -66,7 +138,14 @@ const Footer: React.FC = () => {
           </Grid>
           
           <Grid item xs={12} sm={4}>
-            <Typography variant="h6" gutterBottom>
+            <Typography 
+              variant="h6" 
+              gutterBottom
+              sx={{
+                fontWeight: 'bold',
+                color: '#e3f2fd'
+              }}
+            >
               Contact Information
             </Typography>
             <Typography variant="body2" gutterBottom>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Button, Snackbar, Typography, IconButton } from '@mui/material';
 import { Close as CloseIcon, GetApp as GetAppIcon } from '@mui/icons-material';
+import { useTheme } from '../contexts/ThemeContext';
 
 interface BeforeInstallPromptEvent extends Event {
   readonly platforms: string[];
@@ -12,6 +13,7 @@ interface BeforeInstallPromptEvent extends Event {
 }
 
 const PWAInstallPrompt: React.FC = () => {
+  const { mode } = useTheme();
   const [installPrompt, setInstallPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [showPrompt, setShowPrompt] = useState(false);
 
@@ -92,15 +94,28 @@ const PWAInstallPrompt: React.FC = () => {
         sx={{
           display: 'flex',
           alignItems: 'center',
-          bgcolor: 'background.paper',
-          borderRadius: 2,
-          boxShadow: 3,
+          background: mode === 'dark'
+            ? 'linear-gradient(145deg, rgba(30, 30, 30, 0.95) 0%, rgba(50, 50, 50, 0.95) 100%)'
+            : 'linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%)',
+          backdropFilter: 'blur(20px)',
+          border: mode === 'dark' ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(255, 255, 255, 0.2)',
+          borderRadius: 3,
+          boxShadow: mode === 'dark'
+            ? '0 8px 32px rgba(0, 0, 0, 0.4)'
+            : '0 8px 32px rgba(0, 0, 0, 0.15)',
           p: 2,
           maxWidth: 400,
         }}
       >
         <Box sx={{ flexGrow: 1, mr: 2 }}>
-          <Typography variant="subtitle1" component="div" fontWeight="bold">
+          <Typography 
+            variant="subtitle1" 
+            component="div" 
+            fontWeight="bold"
+            sx={{
+              color: mode === 'dark' ? '#e3f2fd' : '#1565c0'
+            }}
+          >
             Install App
           </Typography>
           <Typography variant="body2" color="text.secondary">
@@ -109,7 +124,6 @@ const PWAInstallPrompt: React.FC = () => {
         </Box>
         <Button
           variant="contained"
-          color="primary"
           startIcon={<GetAppIcon />}
           onClick={handleInstall}
           sx={{
@@ -117,12 +131,32 @@ const PWAInstallPrompt: React.FC = () => {
             px: 3,
             py: 1,
             fontSize: '0.875rem',
-            fontWeight: 600
+            fontWeight: 600,
+            background: 'linear-gradient(45deg, #1976d2 30%, #42a5f5 90%)',
+            boxShadow: '0 3px 5px 2px rgba(25, 118, 210, .3)',
+            '&:hover': {
+              background: 'linear-gradient(45deg, #1565c0 30%, #1976d2 90%)',
+              transform: 'translateY(-2px)',
+              boxShadow: '0 6px 10px 2px rgba(25, 118, 210, .3)'
+            },
+            transition: 'all 0.3s ease'
           }}
         >
           Install
         </Button>
-        <IconButton size="small" onClick={handleClose} sx={{ ml: 1 }}>
+        <IconButton 
+          size="small" 
+          onClick={handleClose} 
+          sx={{ 
+            ml: 1,
+            color: mode === 'dark' ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.6)',
+            '&:hover': {
+              backgroundColor: mode === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.04)',
+              transform: 'scale(1.1)'
+            },
+            transition: 'all 0.3s ease'
+          }}
+        >
           <CloseIcon fontSize="small" />
         </IconButton>
       </Box>
