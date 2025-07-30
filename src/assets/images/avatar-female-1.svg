@@ -1,5 +1,57 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
-  <circle cx="100" cy="100" r="100" fill="#e0e0e0" />
-  <circle cx="100" cy="85" r="40" fill="#f48fb1" />
-  <path d="M100 135 C60 135 40 165 40 200 L160 200 C160 165 140 135 100 135 Z" fill="#f48fb1" />
+  <defs>
+    <linearGradient id="bgGradientF" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff9a9e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fecfef;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="skinGradientF" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fdbcb4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f4a6a0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="shirtGradientF" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8bbd9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e91e63;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="hairGradientF" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8d6e63;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5d4037;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle with gradient -->
+  <circle cx="100" cy="100" r="100" fill="url(#bgGradientF)" />
+  
+  <!-- Face -->
+  <circle cx="100" cy="80" r="35" fill="url(#skinGradientF)" />
+  
+  <!-- Hair (longer style) -->
+  <path d="M65 60 Q100 40 135 60 Q140 70 135 85 Q130 95 125 100 Q115 105 100 105 Q85 105 75 100 Q70 95 65 85 Q60 70 65 60 Z" fill="url(#hairGradientF)" />
+  
+  <!-- Hair highlights -->
+  <path d="M75 65 Q90 55 105 65 Q110 70 105 75" fill="#a1887f" opacity="0.6" />
+  
+  <!-- Eyes -->
+  <circle cx="90" cy="75" r="3" fill="#333" />
+  <circle cx="110" cy="75" r="3" fill="#333" />
+  
+  <!-- Eyelashes -->
+  <path d="M87 72 L89 70" stroke="#333" stroke-width="1" />
+  <path d="M93 72 L91 70" stroke="#333" stroke-width="1" />
+  <path d="M107 72 L109 70" stroke="#333" stroke-width="1" />
+  <path d="M113 72 L111 70" stroke="#333" stroke-width="1" />
+  
+  <!-- Nose -->
+  <ellipse cx="100" cy="85" rx="2" ry="3" fill="#f4a6a0" opacity="0.7" />
+  
+  <!-- Mouth (with lipstick) -->
+  <path d="M95 92 Q100 96 105 92" stroke="#c2185b" stroke-width="2" fill="none" stroke-linecap="round" />
+  
+  <!-- Body/Shirt -->
+  <path d="M100 115 C75 115 55 140 55 170 L55 200 L145 200 L145 170 C145 140 125 115 100 115 Z" fill="url(#shirtGradientF)" />
+  
+  <!-- Neckline detail -->
+  <path d="M90 115 Q100 120 110 115" stroke="#ad1457" stroke-width="2" fill="none" />
+  
+  <!-- Shadow for depth -->
+  <ellipse cx="100" cy="190" rx="45" ry="8" fill="#000" opacity="0.1" />
 </svg>
