@@ -26,13 +26,13 @@ const Footer: React.FC = () => {
           background: mode === 'dark'
             ? 'rgba(0, 0, 0, 0.2)'
             : 'rgba(255, 255, 255, 0.1)',
-          backdropFilter: 'blur(10px)',
-          pointerEvents: 'none'
+          pointerEvents: 'none',
+          zIndex: 0
         }
       }}
       component="footer"
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
         <Grid container spacing={4} justifyContent="space-between">
           <Grid item xs={12} sm={4}>
             <Typography 
@@ -40,15 +40,16 @@ const Footer: React.FC = () => {
               gutterBottom
               sx={{
                 fontWeight: 'bold',
-                background: 'linear-gradient(45deg, #ffffff 30%, #e3f2fd 90%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text'
+                color: '#ffffff !important',
+                textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+                opacity: 1,
+                zIndex: 2,
+                position: 'relative'
               }}
             >
               Smart Sports Booking
             </Typography>
-            <Typography variant="body2">
+            <Typography variant="body2" sx={{ color: '#ffffff !important', opacity: 1 }}>
               Book your favorite sports facilities with ease.
               Find the perfect venue for your next game or practice session.
             </Typography>
@@ -110,29 +111,37 @@ const Footer: React.FC = () => {
               gutterBottom
               sx={{
                 fontWeight: 'bold',
-                color: '#e3f2fd'
+                color: '#ffffff !important',
+                opacity: 1,
+                zIndex: 2,
+                position: 'relative'
               }}
             >
               Quick Links
             </Typography>
-            <Typography variant="body2" display="block" gutterBottom>
-              <Link href="/facilities" color="inherit" underline="hover">
+            <Typography variant="body2" display="block" gutterBottom sx={{ color: '#ffffff !important' }}>
+              <Link href="/facilities" sx={{ color: '#ffffff !important' }} underline="hover">
                 Facilities
               </Link>
             </Typography>
-            <Typography variant="body2" display="block" gutterBottom>
-              <Link href="/booking" color="inherit" underline="hover">
-                Book Now
+            <Typography variant="body2" display="block" gutterBottom sx={{ color: '#ffffff !important' }}>
+              <Link href="/ranking" sx={{ color: '#ffffff !important' }} underline="hover">
+                Rankings
               </Link>
             </Typography>
-            <Typography variant="body2" display="block" gutterBottom>
-              <Link href="/about" color="inherit" underline="hover">
+            <Typography variant="body2" display="block" gutterBottom sx={{ color: '#ffffff !important' }}>
+              <Link href="/tournaments" sx={{ color: '#ffffff !important' }} underline="hover">
+                Tournaments
+              </Link>
+            </Typography>
+            <Typography variant="body2" display="block" gutterBottom sx={{ color: '#ffffff !important' }}>
+              <Link href="/e-mentor" sx={{ color: '#ffffff !important' }} underline="hover">
+                E-Mentor
+              </Link>
+            </Typography>
+            <Typography variant="body2" display="block" gutterBottom sx={{ color: '#ffffff !important' }}>
+              <Link href="/about" sx={{ color: '#ffffff !important' }} underline="hover">
                 About Us
-              </Link>
-            </Typography>
-            <Typography variant="body2" display="block" gutterBottom>
-              <Link href="/contact" color="inherit" underline="hover">
-                Contact Us
               </Link>
             </Typography>
           </Grid>
@@ -143,28 +152,31 @@ const Footer: React.FC = () => {
               gutterBottom
               sx={{
                 fontWeight: 'bold',
-                color: '#e3f2fd'
+                color: '#ffffff !important',
+                opacity: 1,
+                zIndex: 2,
+                position: 'relative'
               }}
             >
               Contact Information
             </Typography>
-            <Typography variant="body2" gutterBottom>
+            <Typography variant="body2" gutterBottom sx={{ color: '#ffffff !important' }}>
               123 Sports Avenue, Sportsville
             </Typography>
-            <Typography variant="body2" gutterBottom>
+            <Typography variant="body2" gutterBottom sx={{ color: '#ffffff !important' }}>
               Phone: +1 (123) 456-7890
             </Typography>
-            <Typography variant="body2" gutterBottom>
+            <Typography variant="body2" gutterBottom sx={{ color: '#ffffff !important' }}>
               Email: info@smartsportsbooking.com
             </Typography>
-            <Typography variant="body2" gutterBottom>
+            <Typography variant="body2" gutterBottom sx={{ color: '#ffffff !important' }}>
               Hours: Monday-Friday 9am-6pm
             </Typography>
           </Grid>
         </Grid>
         
         <Box mt={5}>
-          <Typography variant="body2" align="center">
+          <Typography variant="body2" align="center" sx={{ color: '#ffffff !important', opacity: 1 }}>
             {'© '}
             {new Date().getFullYear()}
             {' Smart Sports Booking. All rights reserved.'}

@@ -21,19 +21,25 @@ import FacilityDetailPage from './pages/FacilityDetailPage';
 import BookingPage from './pages/BookingPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import RankingPage from './pages/RankingPage';
+import TournamentPage from './pages/TournamentPage';
+import EMentorPage from './pages/EMentorPage';
 
 function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <Router basename="/smart-sports-booking">
+          <Router basename={process.env.NODE_ENV === 'production' ? '/smart-sports-booking' : ''}>
             <Layout>
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/facilities" element={<FacilitiesPage />} />
                 <Route path="/facilities/:facilityId" element={<FacilityDetailPage />} />
                 <Route path="/booking/:facilityId" element={<BookingPage />} />
+                <Route path="/ranking" element={<RankingPage />} />
+                <Route path="/tournaments" element={<TournamentPage />} />
+                <Route path="/e-mentor" element={<EMentorPage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="*" element={<Navigate to="/" replace />} />

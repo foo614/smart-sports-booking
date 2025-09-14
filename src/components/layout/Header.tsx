@@ -6,7 +6,9 @@ import { useTheme } from '../../contexts/ThemeContext';
 
 const Header: React.FC = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [mobileMenuAnchorEl, setMobileMenuAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const mobileMenuOpen = Boolean(mobileMenuAnchorEl);
   const { mode, toggleColorMode } = useTheme();
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -15,6 +17,14 @@ const Header: React.FC = () => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setMobileMenuAnchorEl(event.currentTarget);
+  };
+
+  const handleMobileMenuClose = () => {
+    setMobileMenuAnchorEl(null);
   };
 
   return (
@@ -29,7 +39,8 @@ const Header: React.FC = () => {
           edge="start"
           color="inherit"
           aria-label="menu"
-          sx={{ mr: 2 }}
+          onClick={handleMobileMenuOpen}
+          sx={{ mr: 2, display: { xs: 'block', md: 'none' } }}
         >
           <MenuIcon />
         </IconButton>
@@ -41,22 +52,50 @@ const Header: React.FC = () => {
           </Link>
         </Typography>
 
-        <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-          <Button color="inherit" component={Link} to="/facilities">
+        <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
+          <Button 
+            color="inherit" 
+            component={Link} 
+            to="/facilities"
+            sx={{ px: 2, py: 1, borderRadius: 2 }}
+          >
             Facilities
           </Button>
-          <Button color="inherit" component={Link} to="/booking">
-            Book Now
+          <Button 
+            color="inherit" 
+            component={Link} 
+            to="/ranking"
+            sx={{ px: 2, py: 1, borderRadius: 2 }}
+          >
+            Rankings
           </Button>
-          <Button color="inherit" component={Link} to="/about">
+          <Button 
+            color="inherit" 
+            component={Link} 
+            to="/tournaments"
+            sx={{ px: 2, py: 1, borderRadius: 2 }}
+          >
+            Tournaments
+          </Button>
+          <Button 
+            color="inherit" 
+            component={Link} 
+            to="/e-mentor"
+            sx={{ px: 2, py: 1, borderRadius: 2 }}
+          >
+            E-Mentor
+          </Button>
+          <Button 
+            color="inherit" 
+            component={Link} 
+            to="/about"
+            sx={{ px: 2, py: 1, borderRadius: 2 }}
+          >
             About Us
-          </Button>
-          <Button color="inherit" component={Link} to="/contact">
-            Contact
           </Button>
         </Box>
 
-        <Box sx={{ ml: 2, display: 'flex', alignItems: 'center' }}>
+        <Box sx={{ ml: 3, display: 'flex', alignItems: 'center', gap: 1 }}>
           <IconButton
             onClick={toggleColorMode}
             color="inherit"
@@ -101,6 +140,38 @@ const Header: React.FC = () => {
           >
             <MenuItem onClick={handleClose} component={Link} to="/login">Login</MenuItem>
             <MenuItem onClick={handleClose} component={Link} to="/register">Register</MenuItem>
+          </Menu>
+          <Menu
+            id="mobile-menu"
+            anchorEl={mobileMenuAnchorEl}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            open={mobileMenuOpen}
+            onClose={handleMobileMenuClose}
+            sx={{ display: { xs: 'block', md: 'none' } }}
+          >
+            <MenuItem onClick={handleMobileMenuClose} component={Link} to="/facilities">
+              Facilities
+            </MenuItem>
+            <MenuItem onClick={handleMobileMenuClose} component={Link} to="/ranking">
+              Rankings
+            </MenuItem>
+            <MenuItem onClick={handleMobileMenuClose} component={Link} to="/tournaments">
+              Tournaments
+            </MenuItem>
+            <MenuItem onClick={handleMobileMenuClose} component={Link} to="/e-mentor">
+              E-Mentor
+            </MenuItem>
+            <MenuItem onClick={handleMobileMenuClose} component={Link} to="/about">
+              About Us
+            </MenuItem>
           </Menu>
         </Box>
       </Toolbar>
